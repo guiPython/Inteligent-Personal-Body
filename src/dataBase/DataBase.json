@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "nome": "guilherme",
+      "email": "teste@teste.com.br",
+      "senha": "teste123"
+    }
+  ],
+  "clients": []
+}

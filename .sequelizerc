@@ -1,0 +1,6 @@
+const path = require('path')
+
+module.exports = {
+    config: {dialect:"sqlite",storage:path.resolve(__dirname,"src","DataBase","db.sqlite"),define:{timestamps:true}},
+    'migrations-path': path.resolve(__dirname,'src','DataBase','migrations')
+} 

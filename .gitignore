@@ -1,5 +1,6 @@
 /build
 /node_modules
+/noSQL
 .vscode
 jest.config.js
 tsconfig.json

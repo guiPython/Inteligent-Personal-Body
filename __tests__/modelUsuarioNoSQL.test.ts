@@ -1,4 +1,4 @@
-import { UsuarioModel } from "../src/scripts/Models/usuario"
+import { UsuarioModel } from "../noSQL/scripts/Models/usuario"
 const usuario = new UsuarioModel("guilherme","teste@teste.com.br","teste123")
 const nUsuario = new UsuarioModel()
 

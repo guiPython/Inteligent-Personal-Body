@@ -1,4 +1,4 @@
-import { ClienteModel } from "../src/scripts/Models/cliente"
+import { ClienteModel } from "../noSQL/scripts/Models/cliente"
 
 const cliente = new ClienteModel(
     "Guilherme Rocha Muzi Franco",

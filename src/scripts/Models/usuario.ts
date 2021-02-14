@@ -1,9 +1,9 @@
 import { Association, Model , Optional , DataTypes } from "sequelize"
 import { Cliente } from "./cliente"
-import { connection } from "../DataBase/DataBase"
+import connection from "../../DataBase/DataBase"
 
 interface AtrUsuario{
-    id: number,
+    id?: number,
     nome:string,
     senha:string,
     email:string
@@ -25,6 +25,7 @@ class Usuario extends Model<AtrUsuario,CreateAtrUsuario> implements AtrUsuario{
     public static associations : {
         clientes: Association<Usuario,Cliente>
     }
+
 }
 
 Usuario.init(
@@ -53,6 +54,6 @@ Usuario.init(
     }
 )
 
-Usuario.hasMany(Cliente,{sourceKey:"id"})
+Usuario.hasMany(Cliente,{sourceKey:"id",foreignKey:"id_usuario",as:"clientes"})
 
-export { Usuario }
+export { Usuario , AtrUsuario }

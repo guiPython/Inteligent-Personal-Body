@@ -1,6 +1,6 @@
 import { app , BrowserWindow } from "electron"
 import path from "path"
-import { usuarioController } from "./noSQL/scripts/Controllers/usuario"
+import { usuarioController } from "./src/scripts/Controllers/usuario"
 
 
 var window : BrowserWindow

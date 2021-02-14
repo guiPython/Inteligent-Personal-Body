@@ -1,7 +1,6 @@
-import { Usuario } from "../src/Models/usuario"
+import { Usuario , AtrUsuario} from "../src/scripts/Models/usuario"
 
-
-const usuario = {
+const usuario : AtrUsuario = {
     nome:"Guilherme Rocha Muzi Franco",
     senha:"teste1234",
     email:"teste@teste.com.br"
@@ -9,7 +8,7 @@ const usuario = {
 
 describe("\n TESTE: Métodos do Banco Tabela Usuarios", () => {
 
-    test(" function Create DataBase", async () => {
+    test(" function Create Table Usuarios", async () => {
         expect( await Usuario.sync({force:true}).then(() => { return true } )).toBe(true)
     })
 
@@ -32,5 +31,16 @@ describe("\n TESTE: Métodos do Banco Tabela Usuarios", () => {
 
     test(" function Delete ", async () => {
         expect ( await Usuario.destroy({where:{email:usuario.email}})).toBe(1)
+    })
+
+    test(" function Create Again" , async () => {
+        expect( await Usuario.create(usuario) ).toMatchObject(
+            {
+                    id:2,
+                    nome:usuario.nome,
+                    senha:usuario.senha,
+                    email:usuario.email
+                }
+        )
     })
 })

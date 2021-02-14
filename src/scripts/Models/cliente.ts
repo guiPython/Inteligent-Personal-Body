@@ -1,10 +1,12 @@
-import { DataTypes, Model , Optional} from "sequelize"
-import { connection } from "../DataBase/DataBase";
-import { Usuario } from "./usuario"
+import { Association, DataTypes, Model , Optional} from "sequelize"
+import  connection  from "../../DataBase/DataBase";
+import { CircMusculo } from "./circMusculos";
+import { DbrCutanea } from "./dbrCutaneas";
 import { Medida } from "./medida"
 
 interface AtrCliente {
-    id:number,
+    id?:number,
+    id_usuario:number;
     nome:string,
     cpf:string,
     data_nascimento:Date,
@@ -19,6 +21,7 @@ interface CreateAtrCliente extends Optional<AtrCliente,"id">{}
 class Cliente extends Model<AtrCliente,CreateAtrCliente> implements AtrCliente{
 
     public id !: number;
+    public id_usuario !: number;
     public nome !: string;
     public cpf !: string;
     public data_nascimento !: Date;
@@ -29,6 +32,12 @@ class Cliente extends Model<AtrCliente,CreateAtrCliente> implements AtrCliente{
 
     public readonly createAt!: Date;
     public readonly updateAt!: Date
+
+    public static associations : {
+        medidas: Association<Cliente,Medida>,
+        dobras:  Association<Cliente,DbrCutanea>
+        circunferencias: Association<Cliente,CircMusculo>
+    }
 }
 
 Cliente.init(
@@ -37,6 +46,10 @@ Cliente.init(
             type:DataTypes.INTEGER,
             autoIncrement:true,
             primaryKey:true,
+        },
+        id_usuario:{
+            type:DataTypes.INTEGER,
+            allowNull:false,
         },
         nome:{
             type:DataTypes.STRING,
@@ -73,7 +86,8 @@ Cliente.init(
     }
 )
 
-//Cliente.belongsTo(Usuario,{targetKey:"id"})
-//Cliente.hasMany(Medida,{sourceKey:"id"})
+Cliente.hasMany(Medida,{sourceKey:"id",foreignKey:"id_cliente",as:"medidas"})
+Cliente.hasMany(DbrCutanea,{sourceKey:"id",foreignKey:"id_cliente",as:"dobras"})
+Cliente.hasMany(CircMusculo,{sourceKey:"id",foreignKey:"id_cliente",as:"circunferencias"})
 
-export{Cliente}
+export{ Cliente , AtrCliente }

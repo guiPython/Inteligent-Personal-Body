@@ -2,7 +2,7 @@ import { DataTypes ,  Model ,  Optional } from "sequelize"
 import connection from "../../DataBase/DataBase";
 
 interface AtrDbrCutanea{
-    id:number,
+    id?:number,
     id_cliente:number,
     dbrcTricipitalD:number,
     dbrcTricipitalE:number,
@@ -55,4 +55,4 @@ DbrCutanea.init(
     }
 )
 
-export { DbrCutanea }
+export { DbrCutanea , AtrDbrCutanea}

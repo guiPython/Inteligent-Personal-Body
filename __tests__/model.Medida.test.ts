@@ -4,20 +4,6 @@ const medida : AtrMedida = {
     id_cliente:2,
     altura:1.86,
     peso:87.63,
-    /*circAbdomen:5.6,
-    circBracoD:15.6,
-    circBracoE:89.6,
-    circCintura:58.5,
-    circCoxaD:87.9,
-    circCoxaE:88.9,
-    circGluteo:54.7,
-    circPernaD:78.9,
-    circPernaE:77.8,
-    circTorax:45.6,
-    dbrcAbdominal:14.5,
-    dbrcPeitoral:10.5,
-    dbrcTricipitalD:8.4,
-    dbrcTricipitalE:7.6,*/
 }
 
 describe("\n TESTE: Métodos do Banco Tabela Usuarios", () => {

@@ -2,7 +2,7 @@ import { Model , DataTypes , Optional } from "sequelize"
 import connection  from "../../DataBase/DataBase"
 
 interface AtrCircMusculo {
-    id:number,
+    id?:number,
     id_cliente:number,
     circBracoD:number,
     circBracoE:number,
@@ -95,4 +95,4 @@ CircMusculo.init(
     }
 )
 
-export { CircMusculo }
+export { CircMusculo , AtrCircMusculo }

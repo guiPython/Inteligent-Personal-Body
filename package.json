@@ -5,9 +5,8 @@
   "main": "build/main.js",
   "scripts": {
     "test": "jest --no-cache",
-    "compile": "tsc && copyfiles -a src/* build && copyfiles -a src/pages/** build",
-    "start": "npm run compile && electron .",
-    "run": "cd build && electron ."
+    "compile": "tsc && copyfiles -a src/* build && copyfiles -a src/pages/** build && electron .",
+    "start": "electron ."
   },
   "author": "Guilherme Rocha",
   "license": "ISC",

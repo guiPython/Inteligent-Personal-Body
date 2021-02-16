@@ -36,11 +36,11 @@ describe("\n TESTE: Métodos do Banco Tabela Usuarios", () => {
     test(" function Create Again" , async () => {
         expect( await Usuario.create(usuario) ).toMatchObject(
             {
-                    id:2,
-                    nome:usuario.nome,
-                    senha:usuario.senha,
-                    email:usuario.email
-                }
+                id:2,
+                nome:usuario.nome,
+                senha:usuario.senha,
+                email:usuario.email
+            }
         )
     })
 })

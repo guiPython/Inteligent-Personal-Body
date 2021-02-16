@@ -18,14 +18,16 @@ document.addEventListener("DOMContentLoaded",()=>{
     })
 
     cadastroButton.addEventListener("click",()=>{
-        let usurio : AtrUsuario = { nome:nomeInput.cadastro.value , email:emailInput.cadastro.value , senha:senhaInput.cadastro.value }
-        ipcRenderer.send("Cadastro",usurio)
+        let usuario : AtrUsuario = { nome:nomeInput.cadastro.value , email:emailInput.cadastro.value , senha:senhaInput.cadastro.value }
+        ipcRenderer.send("Cadastro",usuario)
     })
 
     ipcRenderer.on("sendStatusLogin",async (event, arg:boolean|Usuario)=>{
         if ( arg ){
             let usuario = arg as any
-            await win.loadFile(path.resolve(__dirname,"../../pages/body/fullBody.html"))
+            let user = JSON.stringify(usuario.dataValues)
+            sessionStorage.setItem("user",user);
+            await win.loadFile(path.resolve(__dirname,"../../pages/usuario/usuario.html"))
         }
         else{
             alert("Usuario e/ou Senhas incorretos")

@@ -1,6 +1,7 @@
 import { app , BrowserWindow } from "electron"
 import path from "path"
 import { usuarioController } from "./src/scripts/Controllers/usuario"
+import { clienteController } from "./src/scripts/Controllers/cliente"
 
 
 var window : BrowserWindow
@@ -17,6 +18,7 @@ async function createWindow(){
     })
 
     usuarioController()
+    clienteController()
     await window.loadFile(path.resolve(__dirname,"./src/pages/index/index.html"))
 
     window.webContents.openDevTools()

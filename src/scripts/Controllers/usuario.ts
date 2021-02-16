@@ -16,8 +16,14 @@ const usuarioController = () => {
                 let status
                 try{ await Usuario.create(arg) ;  status = true }
                 catch(e){ status = false }
-                console.log(status)
                 window.webContents.send("sendStatusCadastro",status)
+        })
+
+        ipcMain.on("EsqueciSenha", async (event, arg:AtrUsuario) => {
+                let status
+                try{ status = await Usuario.update({senha:arg.senha},{where:{email:arg.email,nome:arg.nome}})}
+                catch(e){ status = false }
+                window.webContents.send("",status)
         })
 }
 

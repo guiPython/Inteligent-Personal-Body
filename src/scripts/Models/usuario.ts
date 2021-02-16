@@ -4,7 +4,7 @@ import connection from "../../DataBase/DataBase"
 
 interface AtrUsuario{
     id?: number,
-    nome:string,
+    nome?:string,
     senha:string,
     email:string
 }
@@ -45,6 +45,7 @@ Usuario.init(
         },
         email:{
             type: DataTypes.STRING(60),
+            unique: true,
             allowNull: false,
         }
     },

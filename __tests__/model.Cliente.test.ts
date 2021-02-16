@@ -9,6 +9,7 @@ const cliente : AtrCliente = {
     genero:"Masculino",
     email:"cesar.gmail.com.br",
     status:true,
+    
 }
 
 describe("\n TESTE: Métodos do Banco Tabela Clientes", () => {

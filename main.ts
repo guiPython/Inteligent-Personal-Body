@@ -9,8 +9,8 @@ var window : BrowserWindow
 async function createWindow(){
 
     window = new BrowserWindow({
-        width: 1920,
-        height: 1080,
+        width: 1000,
+        height: 800,
         webPreferences:{
             nodeIntegration:true,
             enableRemoteModule:true,

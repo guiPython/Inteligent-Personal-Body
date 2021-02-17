@@ -17,7 +17,34 @@
         <button id="findByCPF">Procurar</button>
     </div>
     <div>
+        <table id="tabela">
+            <tr>
+              <th>Nome</th>
+              <th>Biotipo</th>
+              <th>Gênero</th>
+              <th>CPF</th>
+              <th>Data Nascimento</th>
+              <th>Acesso Rápido</th>
+            </tr>
+        </table>
+    </div>
+    <div>
         <a href="#">Adicionar Cliente</a>
     </div>
+</body>
+<script>
+    user = JSON.parse(sessionStorage.getItem("user"));
+    cont = 0;
+    user.clientes.forEach(elemento => {
+        if(cont % 5 == 0 && cont != 0){
+            document.getElementById("tabela").innerHTML += "<tr>";
+        }
+        document.getElementById("tabela").innerHTML += "<td>" + elemento.nome + "</td>" + "<td>" + elemento.biotipo + "</td>" + "<td>" + elemento.genero + "</td>" + "<td>" + elemento.cpf + "</td>" +"<td>" + new Date(elemento.data_nascimento).toISOString().split("T")[0] + "</td>" + `<button onclick="getCliente()" class="findCliente" cpf=${elemento.cpf}>Acesso Rápido </button>`;
+        if(cont % 5 == 0 && cont != 0){
+            document.getElementById("tabela").innerHTML += "<tr>";
+        }
+        cont += 1;
+    });
+</script>
 </body>
 </html>

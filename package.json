@@ -5,7 +5,7 @@
   "main": "build/main.js",
   "scripts": {
     "test": "jest --no-cache",
-    "compile": "tsc && copyfiles -a src/* build && copyfiles -a src/pages/** build  && copyfiles -a src/scripts/Bootstrap/** build && copyfiles -a src/scripts/Jquery/* build && copyfiles -a src/image/* build",
+    "compile": "tsc && copyfiles -a src/** build",
     "start": "npm run compile && electron .",
     "bora": "electron ."
   },

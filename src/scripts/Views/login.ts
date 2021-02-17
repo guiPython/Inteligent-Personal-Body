@@ -22,11 +22,10 @@ document.addEventListener("DOMContentLoaded",()=>{
         ipcRenderer.send("Cadastro",usuario)
     })
 
-    ipcRenderer.on("sendStatusLogin",async (event, arg:boolean|Usuario)=>{
+    ipcRenderer.on("sendStatusLogin",async (event, arg:boolean|string)=>{
         if ( arg ){
-            let usuario = arg as any
-            let user = JSON.stringify(usuario.dataValues)
-            sessionStorage.setItem("user",user);
+            let usuario = arg as string
+            sessionStorage.setItem("user",usuario);
             await win.loadFile(path.resolve(__dirname,"../../pages/usuario/usuario.html"))
         }
         else{

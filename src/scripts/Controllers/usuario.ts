@@ -7,7 +7,7 @@ const usuarioController = () => {
 
         ipcMain.on("Login", async (event , arg:AtrUsuario )=>{
                 let status
-                try{ status = await Usuario.findOne({where: Sequelize.and({ email:arg.email, senha:arg.senha })}) }
+                try{ status = JSON.stringify((await Usuario.findOne({where: Sequelize.and({ email:arg.email, senha:arg.senha }),include:["clientes"]}) as any).dataValues) }
                 catch(e){ status = false }
                 window.webContents.send("sendStatusLogin",status == null ? false : status)
         })
@@ -21,9 +21,9 @@ const usuarioController = () => {
 
         ipcMain.on("EsqueciSenha", async (event, arg:AtrUsuario) => {
                 let status
-                try{ status = await Usuario.update({senha:arg.senha},{where:{email:arg.email,nome:arg.nome}})}
-                catch(e){ status = false }
-                window.webContents.send("",status)
+                try{ status = await Usuario.update({senha:arg.senha},{where:{email:arg.email}})}
+                catch(e){ status = 0 }
+                window.webContents.send("trocouSenha",status == 0 ? false : true)
         })
 }
 

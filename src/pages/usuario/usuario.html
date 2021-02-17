@@ -39,7 +39,7 @@
         if(cont % 5 == 0 && cont != 0){
             document.getElementById("tabela").innerHTML += "<tr>";
         }
-        document.getElementById("tabela").innerHTML += "<td>" + elemento.nome + "</td>" + "<td>" + elemento.biotipo + "</td>" + "<td>" + elemento.genero + "</td>" + "<td>" + elemento.cpf + "</td>" +"<td>" + new Date(elemento.data_nascimento).toISOString().split("T")[0] + "</td>" + "<td> <a href=#>Acesso Rápido</a> </td>";
+        document.getElementById("tabela").innerHTML += "<td>" + elemento.nome + "</td>" + "<td>" + elemento.biotipo + "</td>" + "<td>" + elemento.genero + "</td>" + "<td>" + elemento.cpf + "</td>" +"<td>" + new Date(elemento.data_nascimento).toISOString().split("T")[0] + "</td>" + "<td> <button class='findCliente'> &#10149; </button></td>";
         if(cont % 5 == 0 && cont != 0){
             document.getElementById("tabela").innerHTML += "<tr>";
         }

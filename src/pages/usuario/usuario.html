@@ -35,13 +35,15 @@
     </main>
 </body>
 <script>
-    user = JSON.parse(sessionStorage.getItem("user"));
+    function inverter(s) {
+        return s.split("-").reverse().join('/');
+    }
     cont = 0;
-    user.clientes.forEach(elemento => {
+    usuario.clientes.forEach(elemento => {
         if(cont % 5 == 0 && cont != 0){
             document.getElementById("tabela").innerHTML += "<tr>";
         }
-        document.getElementById("tabela").innerHTML += "<td>" + elemento.nome + "</td>" + "<td>" + elemento.biotipo + "</td>" + "<td>" + elemento.genero + "</td>" + "<td>" + elemento.cpf + "</td>" +"<td>" + new Date(elemento.data_nascimento).toISOString().split("T")[0] + "</td>" + "<td> <button class='findCliente'> &#10149; </button></td>";
+        document.getElementById("tabela").innerHTML += "<td>" + elemento.nome + "</td>" + "<td>" + elemento.biotipo + "</td>" + "<td>" + elemento.genero + "</td>" + "<td>" + elemento.cpf + "</td>" +"<td>" + inverter(new Date(elemento.data_nascimento).toISOString().split("T")[0]) + "</td>" + `<td> <button onclick="getCliente()" cpf="${elemento.cpf}" class='findCliente'> &#10149; </button></td>`;
         if(cont % 5 == 0 && cont != 0){
             document.getElementById("tabela").innerHTML += "<tr>";
         }

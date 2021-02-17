@@ -19,7 +19,7 @@ async function createWindow(){
 
     usuarioController()
     clienteController()
-    await window.loadFile(path.resolve(__dirname,"./src/pages/index/index.html"))
+    await window.loadFile(path.resolve(__dirname,"./src/pages/login/login.html"))
 
     window.webContents.openDevTools()
 }

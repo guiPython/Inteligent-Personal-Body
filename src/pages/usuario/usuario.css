@@ -8,14 +8,53 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
-  }
-  
-  td, th {
+}
+td, th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-  }
-  
-  tbody:nth-child(even) {
+}
+tbody:nth-child(even) {
     background-color: #dddddd;
-  }
+}
+main{
+    background-color: white;
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+}
+#formulario{
+    margin: 0 auto;
+    padding: 10px;
+    width: 40%;
+}
+table th {
+    background-color: black;
+    color: white;
+}
+.findCliente{
+    background-color: aqua;
+    border: none;
+    color: white;
+    padding: 2px 25px;
+    text-decoration: none;
+    margin: 1px 1px;
+    cursor: pointer;
+    font-size: 20px;
+    width: 50%;
+}
+/*table tr:nth-child(2){
+    width: 11%;
+}
+table tr:nth-child(3){
+    width: 11%;
+}
+table tr:nth-child(4){
+    width: 13%;
+}
+table tr:nth-child(5){
+    width: 13%;
+}
+table tr:nth-child(6){
+    width: 10%;
+}*/

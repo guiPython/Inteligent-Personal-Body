@@ -9,7 +9,7 @@ var window : BrowserWindow
 async function createWindow(){
 
     window = new BrowserWindow({
-        width: 1400,
+        width: 1700,
         height: 900,
         show: false,
         frame:false,
@@ -25,9 +25,8 @@ async function createWindow(){
 
     usuarioController()
     clienteController()
-    await window.loadFile(path.resolve(__dirname,"./src/pages/formlogin/login.html"))
+    await window.loadFile(path.resolve(__dirname,"./src/pages/formlogin/formLogin.html"))
 
-    window.webContents.openDevTools()
 }
 
 app.whenReady().then(createWindow)

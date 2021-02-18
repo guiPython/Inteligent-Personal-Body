@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         let cliente = arg
         sessionStorage.setItem("cliente",cliente)
         await win.loadFile(path.resolve(__dirname,"../../pages/cliente/cliente.html"))
+        win.maximize()
     })
 
 })  

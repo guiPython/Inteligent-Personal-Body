@@ -1,8 +1,11 @@
 body {
     color: #eee;
-    padding-top: 10vh;
     background: #c8c8c8;
     font: 600 18px/20px 'Open Sans', sans-serif
+}
+
+.d-flex{
+    padding-top: 10vh;
 }
 
 .group[for='pass'],.group[for='user']{
@@ -15,11 +18,9 @@ body {
 
 .login-box {
     width: 100%;
-    margin: auto;
-    max-width: 525px;
+    margin: 0;
     min-height: 670px;
     position: relative;
-    box-shadow: 0 12px 15px 0 rgba(180, 176, 176, 0.24), 0 17px 50px 0 rgba(182, 178, 178, 0.19)
 }
 
 
@@ -27,7 +28,7 @@ body {
     width: 100%;
     height: 100%;
     position: absolute;
-    padding: 40px 20px 20px 20px;
+    padding: 50px 20px 20px 70px;
     background: rgba(221, 223, 226, 0.9)
 }
 
@@ -67,7 +68,7 @@ body {
     font-size: 22px;
     margin-right: 15px;
     padding-bottom: 5px;
-    margin: 0 15px 10px 0;
+    margin: 15px 15px 10px 0;
     display: inline-block;
     border-bottom: 2px solid transparent
 }
@@ -212,11 +213,18 @@ a {
     text-align: center
 }
 
-.card {
-    width: 500px;
-    margin: 0 auto; /* Added */
+.card.form {
+    width: 580px;
     float: none; /* Added */
     margin-bottom: 10px;/* Added */
+    border: none;
+    border-radius: 0%;
+}
+
+.card.align-items-center.justify-content-center.apresentacao{
+    background: rgba(221, 223, 226, 0.9);
+    border: none;
+    border-radius: 0%;
 }
 
 ::placeholder {

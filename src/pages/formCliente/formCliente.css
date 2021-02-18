@@ -1,0 +1,27 @@
+body{
+    margin: none;
+    padding: 0;
+}
+
+.d-flex{
+    padding-top: 15vh;
+    border: none;
+    animation-name: example;
+    animation-duration: 4s;
+}
+
+.card.form{
+    border: none;
+    border-radius: 0%;
+    width: 680px;
+}
+
+
+@keyframes example {
+    from {
+            opacity: 0%;
+        }
+    to {
+            opacity: 100%;
+        }
+}

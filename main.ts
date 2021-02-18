@@ -9,17 +9,23 @@ var window : BrowserWindow
 async function createWindow(){
 
     window = new BrowserWindow({
-        width: 1000,
-        height: 800,
+        width: 1400,
+        height: 900,
+        show: false,
+        frame:false,
         webPreferences:{
             nodeIntegration:true,
             enableRemoteModule:true,
         }
     })
 
+    window.once('ready-to-show', () => {
+        window.show()
+    })
+
     usuarioController()
     clienteController()
-    await window.loadFile(path.resolve(__dirname,"./src/pages/login/login.html"))
+    await window.loadFile(path.resolve(__dirname,"./src/pages/formlogin/login.html"))
 
     window.webContents.openDevTools()
 }

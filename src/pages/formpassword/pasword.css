@@ -1,0 +1,41 @@
+.d-flex{
+    padding-top: 15vh;
+    border: none;
+    animation-name: example;
+    animation-duration: 4s;
+}
+.card.form{
+    width: 500px;
+    height: 400px;
+    float: none; /* Added */
+    margin-bottom: 10px;/* Added */
+    border: none;
+    padding-top: 90px;
+}
+
+.card-body.form{
+    padding-left: 100px;
+    padding-top: 20px;
+}
+
+.card.align-items-center.justify-content-center.apresentacao{
+    border: none;
+    border-radius: 0%;
+}
+
+.form-control{
+    width: 60px;
+}
+
+#voltarLogin{
+    margin-left: 10px
+}
+
+@keyframes example {
+    from {
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
+    }
+}

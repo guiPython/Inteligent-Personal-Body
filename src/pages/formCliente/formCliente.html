@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script> var exports = {} ; </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../scripts/Views/formCliente.js"></script>
+    <link rel="stylesheet" href="./formCliente.css"></link>
+    <link href="../../scripts/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+    <body>
+        <div class="d-flex align-items-center justify-content-center">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h3>Inteligent Personal Body</h3>
+                </div>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row justify-content-center mb-4">
+                            <h4>Novo Cliente</h4>
+                        </div>
+                        <div class="row justify-content-center">
+                                <form class="row g-3 needs-validation">
+                                    <div class="position-relative col-md-3">
+                                        <label class="form-label">Nome</label>
+                                        <input class="form-control" id="nome" placeholder="Insira o nome do cliente:" required>
+                                        <div class="invalid-feedback">
+                                            Por favor insira o nome do cliente.
+                                        </div>
+                                    </div>
+
+                                    <div class="position-relative col-md-3">
+                                        <label class="form-label">Sobrenome</label>
+                                        <input class="form-control" id="sobrenome" placeholder="Insira o sobrenome do cliente:" required>
+                                        <div class="invalid-feedback">
+                                            Por favor insira o sobrenome do cliente.
+                                        </div>
+                                    </div>
+
+                                    <div class="position-relative col-md-6">
+                                        <label class="form-label">Data de Nascimento</label>
+                                        <input class="form-control" id="dataNascimento" placeholder="Insira a data de nascimento do cliente:" required>
+                                        <div class="invalid-feedback">
+                                            Por favor insira a data de nascimento do cliente.
+                                        </div>
+                                    </div>
+
+                                    <div class="position-relative col-md-6 mt-3 mb-3">
+                                        <label class="form-label">Email</label>
+                                        <input class="form-control" id="email" placeholder="Insira o email do cliente:" required>
+                                        <div class="invalid-feedback">
+                                            Por favor insira o email do cliente.
+                                        </div>
+                                    </div>
+
+                                    <div class="position-relative col-md-6 mt-3 mb-3">
+                                        <label class="form-label">CPF</label>
+                                        <input class="form-control" id="cpf" placeholder="Insira o cpf do cliente:" required>
+                                        <div class="invalid-feedback">
+                                            Por favor insira o CPF do cliente.
+                                        </div>
+                                    </div>
+
+                                    <div class="position-relative col-md-6 mt-3">
+                                        <div class="row">
+                                            <label class="form-label ml-3">Gênero:</label>
+                                            <div class="form-check ml-3">
+                                                <input type="radio" class="form-check-input" id="generoMasculino" name="radio-stacked" required>
+                                                <label class="form-check-label" for="validationFormCheck2">Masculino</label>
+                                            </div>
+                                            <div class="form-check ml-3">
+                                                <input type="radio" class="form-check-input" id="generoFeminino" name="radio-stacked" required>
+                                                <label class="form-check-label" for="validationFormCheck3">Feminino</label>
+                                                <div class="invalid-feedback">Por favor insira o genero do cliente.</div>
+                                            </div>
+                                        </div>
+                                    </div>    
+
+                                    <div class="position-relative col-md-6 mt-3">
+                                        <div class="row">
+                                            <label class="form-label ml-3">Biotipo:</label>
+                                            <select class="form-select form-select-lg ml-3 mb-3" required aria-label="Selecione o Biotipo">
+                                            <option value="">Selecione o Biotipo</option>
+                                            <option value="1">Ectomorfo</option>
+                                            <option value="2">Endomorfo</option>
+                                            <option value="3">Mesomorfo</option>
+                                            </select>
+                                            <div class="invalid-feedback">Por favor selecione o biotipo do cliente.</div>
+                                        </div>    
+                                    </div>
+                                    <div class="position-relative col-md-12">
+                                        <div class="row justify-content-end mt-3">
+                                            <div class="mb-3">
+                                                <button class="btn btn-primary" type="submit">Cadastrar</button>
+                                                <button class="btn btn-btn-outline-dark ml-3 mr-3"><a href="../usuario/usuario.html">Voltar</a></button>   
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <h7>Power By Thales / Guilherme.</h7>
+                </div>
+            </div>
+        </div>
+            <script>
+                (function () {
+                    'use strict'
+
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.querySelectorAll('needs-validation.row.g-3')
+
+                    // Loop over them and prevent submission
+                    Array.prototype.slice.call(forms)
+                        .forEach(function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (!form.checkValidity()) {
+                                event.preventDefault()
+                                event.stopPropagation()
+                            }
+                            form.classList.add('was-validated')
+                        }, false)
+                        })
+                })()
+        </script>
+    </body>
+</html>

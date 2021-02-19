@@ -11,11 +11,14 @@ async function createWindow(){
     window = new BrowserWindow({
         width: 1700,
         height: 900,
+        maxWidth:1700,
+        maxHeight:900,
         show: false,
         frame:false,
         webPreferences:{
             nodeIntegration:true,
             enableRemoteModule:true,
+            contextIsolation:false
         }
     })
 
@@ -30,5 +33,16 @@ async function createWindow(){
 }
 
 app.whenReady().then(createWindow)
+
+app.on("activate" , async () => {
+    if ( BrowserWindow.getAllWindows().length === 0 ){
+        await createWindow()
+    }
+})
+
+app.on("window-all-closed",()=>{
+    if ( process.platform === "darwin") app.quit()
+})
+
 
 export { window }

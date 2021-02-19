@@ -10,12 +10,10 @@ body{
     animation-duration: 4s;
 }
 
-.card.form{
-    border: none;
-    border-radius: 0%;
-    width: 680px;
+.navbar,footer{
+    background-color: rgba(0, 0, 0, 0.75);
+    /*background-color: rgba(195, 193, 193, 0.712);*/
 }
-
 
 @keyframes example {
     from {
@@ -24,4 +22,24 @@ body{
     to {
             opacity: 100%;
         }
+}
+
+button {
+    height: 100%;
+    padding: 0 15px;
+    border: none;
+    background: transparent;
+    outline: none;
+}
+
+button:hover {
+    background: rgba(221, 221, 221, 0.2);
+}
+
+#close:hover {
+    background: rgb(255, 0, 0);
+}
+
+button i {
+    color: white;
 }

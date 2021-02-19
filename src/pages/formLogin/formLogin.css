@@ -1,11 +1,14 @@
 body {
-    color: #eee;
-    background: #c8c8c8;
     font: 600 18px/20px 'Open Sans', sans-serif
 }
 
 .d-flex{
-    padding-top: 10vh;
+    margin-top: 8vh;
+}
+
+.navbar.justify-content-between,.footer.text-center.text-white.fixed-bottom{
+    background-color: rgba(0, 0, 0, 0.75);
+    /*background-color: rgba(221, 223, 226, 0.9);*/
 }
 
 .group[for='pass'],.group[for='user']{
@@ -229,4 +232,24 @@ a {
 
 ::placeholder {
     color: #070606
+}
+
+button {
+    height: 100%;
+    padding: 0 15px;
+    border: none;
+    background: transparent;
+    outline: none;
+}
+
+button:hover {
+    background: rgba(221, 221, 221, 0.2);
+}
+
+#close:hover {
+    background: rgb(255, 0, 0);
+}
+
+button i {
+    color: white;
 }

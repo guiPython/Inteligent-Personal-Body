@@ -7,15 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../../scripts/Views/formCliente.js"></script>
     <link rel="stylesheet" href="./formCliente.css"></link>
+    <link href="../../scripts/FontAwesome/css/all.css" rel="stylesheet">
     <link href="../../scripts/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <title>Document</title>
+    <title>formCliente.html</title>
 </head>
     <body>
-        <div class="d-flex align-items-center justify-content-center">
-            <div class="card text-center">
-                <div class="card-header">
-                    <h3>Inteligent Personal Body</h3>
+        <nav class="navbar justify-content-between">
+                <div><h3 class="text-white h3">IPB</h3></div>
+                <div id="menu">
+                    <button class="menubar-btn" id="minimize"><i class="fas fa-window-minimize"></i></button>
+                    <button class="menubar-btn" id="maximize"><i class="far fa-square"></i></button>
+                    <button class="menubar-btn" id="close"><i class="fas fa-times"></i></button>
                 </div>
+        </nav>
+        <div class="d-flex align-items-center justify-content-center">
+            <div class="card form">
                 <div class="card-body">
                     <div class="container">
                         <div class="row justify-content-center mb-4">
@@ -93,8 +99,8 @@
                                     <div class="position-relative col-md-12">
                                         <div class="row justify-content-end mt-3">
                                             <div class="mb-3">
-                                                <button class="btn btn-primary" type="submit">Cadastrar</button>
                                                 <button class="btn btn-btn-outline-dark ml-3 mr-3"><a href="../usuario/usuario.html">Voltar</a></button>   
+                                                <button class="btn btn-primary mr-3" type="submit">Cadastrar</button>
                                         </div>
                                     </div>
                                 </form>
@@ -102,11 +108,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <h7>Power By Thales / Guilherme.</h7>
-                </div>
             </div>
         </div>
+        <footer class="text-center text-white fixed-bottom">
+                <div class="text-center p-3">
+                    © 2021 Power By:
+                    <a class="text-white" href="#">Thales / Guilherme</a>
+                </div>
+        </footer>
             <script>
                 (function () {
                     'use strict'

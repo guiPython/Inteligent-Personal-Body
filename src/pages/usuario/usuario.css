@@ -1,4 +1,4 @@
-h1,div,input,label,button{
+h1,input,label,button{
     color: black;
 }
 body{
@@ -43,6 +43,32 @@ table th {
     font-size: 20px;
     width: 50%;
 }
+
+.navbar,.footer.text-center.text-white.fixed-bottom{
+    background-color: rgba(0, 0, 0, 0.75);
+    /*background-color: rgba(195, 193, 193, 0.712);*/
+}
+
+button {
+    height: 100%;
+    padding: 0 15px;
+    border: none;
+    background: transparent;
+    outline: none;
+}
+
+button:hover {
+    background: rgba(221, 221, 221, 0.2);
+}
+
+#close:hover {
+    background: rgb(255, 0, 0);
+}
+
+button i {
+    color: white;
+}
+
 /*table tr:nth-child(2){
     width: 11%;
 }

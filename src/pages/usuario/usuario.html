@@ -5,34 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./usuario.css" ></link>
+    <link href="../../scripts/FontAwesome/css/all.css" rel="stylesheet">
+    <link href="../../scripts/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script> var exports = {} ; </script>
     <script src="../../scripts/Views/usuario.js"></script>
-    <title>Document</title>
+    <title>usuario</title>
 </head>
 <body>
-    <main>
-        <h1 id="hello"></h1>
-        <div id="formulario">
-            <label for="">CPF do Cliente</label>
-            <input type="text" id="cpfCliente">
-            <button id="findByCPF">Procurar</button>
+    <nav class="navbar justify-content-between">
+        <div><h4 class="text-white h4">IPB</h4></div>
+        <div id="menu">
+            <button class="menubar-btn" id="minimize"><i class="fas fa-window-minimize"></i></button>
+            <button class="menubar-btn" id="maximize"><i class="far fa-square"></i></button>
+            <button class="menubar-btn" id="close"><i class="fas fa-times"></i></button>
         </div>
-        <div>
-            <table id="tabela">
-                <tr>
-                <th>Nome do cliente</th>
-                <th>Biotipo</th>
-                <th>Gênero</th>
-                <th>CPF</th>
-                <th>Aniversário</th>
-                <th>Acesso</th>
-                </tr>
-            </table>
+    </nav>
+    <div class="d-flex  align-content-center justify-content-center">
+        <main>
+            <h1 id="hello"></h1>
+            <div id="formulario">
+                <label for="">CPF do Cliente</label>
+                <input type="text" id="cpfCliente">
+                <button id="findByCPF">Procurar</button>
+            </div>
+            <div>
+                <table id="tabela">
+                    <tr>
+                    <th>Nome do cliente</th>
+                    <th>Biotipo</th>
+                    <th>Gênero</th>
+                    <th>CPF</th>
+                    <th>Aniversário</th>
+                    <th>Acesso</th>
+                    </tr>
+                </table>
+            </div>
+            <div id="adicionarCliente">
+                <a href="../formCliente/formCliente.html">Adicionar Cliente</a>
+            </div>
+        </main>
+    </div>
+    <footer class="footer text-center text-white fixed-bottom">
+        <div class="text-center p-3">
+            © 2021 Power By:
+            <a class="text-white" href="#">Thales / Guilherme</a>
         </div>
-        <div id="adicionarCliente">
-            <a href="../formCliente/formCliente.html">Adicionar Cliente</a>
-        </div>
-    </main>
+    </footer>
 </body>
 <script>
     function inverter(s) {

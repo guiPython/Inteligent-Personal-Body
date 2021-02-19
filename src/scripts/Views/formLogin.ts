@@ -1,16 +1,39 @@
-import { ipcRenderer } from "electron"
-import { AtrUsuario , Usuario } from "../Models/usuario"
-import { remote } from "electron"
+import { ipcRenderer , remote} from "electron"
+import { AtrUsuario } from "../Models/usuario"
 import path from "path"
 
 let win = remote.getCurrentWindow()
 
+function minimizeWindow( browserWindow : Electron.BrowserWindow ):void{
+    if ( browserWindow.minimizable ){
+        browserWindow.minimize()
+    }
+}
+
+function maximizeWindow( browserWindow : Electron.BrowserWindow ):void{
+    if ( browserWindow.maximizable ){
+        //browserWindow.maximize()
+    }
+}
+
+function closeWindow( browserWindow : Electron.BrowserWindow ):void{
+    browserWindow.close()
+}
+
+function isWindowMaximized( browserWindow : Electron.BrowserWindow ):boolean{
+    return browserWindow.isMaximized()
+}
+
 document.addEventListener("DOMContentLoaded",()=>{
+
     const loginButton = document.getElementById("login") as HTMLInputElement
     const cadastroButton   = document.getElementById("cadastro") as HTMLInputElement
     const emailInput  = { login: document.querySelector("#email") as HTMLInputElement , cadastro: document.querySelector("#emailCAD") as HTMLInputElement}
     const senhaInput  = { login: document.querySelector("#pass") as HTMLInputElement , cadastro: document.querySelector("#passCAD") as HTMLInputElement}
     const nomeInput   = { cadastro: document.querySelector("#userCAD") as HTMLInputElement }
+    const minimizeButton = document.getElementById("minimize") as HTMLElement;
+    const maxUnmaxButton = document.getElementById("maximize") as HTMLElement;
+    const closeButton = document.getElementById("close") as HTMLElement;
 
     loginButton.addEventListener("click",()=>{
         let usuario : AtrUsuario = { email:emailInput.login.value , senha:senhaInput.login.value }
@@ -46,5 +69,28 @@ document.addEventListener("DOMContentLoaded",()=>{
             alert("Cadastro não efetuado")
         }
     })
+
+    minimizeButton.addEventListener("click", e => {
+        minimizeWindow(win);
+    });
+
+    maxUnmaxButton.addEventListener("click", e => {
+        const icon = maxUnmaxButton.querySelector("i.far") as HTMLElement;
+
+        maximizeWindow(win);
+
+        if (isWindowMaximized(win)) {
+            icon.classList.remove("fa-square");
+            icon.classList.add("fa-clone");
+        } else {
+            icon.classList.add("fa-square");
+            icon.classList.remove("fa-clone");
+        }
+    });
+
+    closeButton.addEventListener("click", e => {
+        closeWindow(win);
+    });
+
 })  
 

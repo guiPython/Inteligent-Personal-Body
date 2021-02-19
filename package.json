@@ -4,7 +4,7 @@
   "description": "",
   "main": "build/main.js",
   "scripts": {
-    "test": "jest --no-cache",
+    "test": "jest model.Usuario.test.ts &&  jest model.Cliente.test.ts jest model.Medida.test.ts jest model.DobraCutanea.test.ts jest model.CircunferenciaMusculo.test.ts jest model.Relacionamentos.test.ts --no-cache -i --runInBand",
     "compile": "tsc && copyfiles -a src/** build",
     "start": "npm run compile && electron .",
     "bora": "electron ."

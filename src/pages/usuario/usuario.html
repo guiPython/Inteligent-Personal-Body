@@ -20,30 +20,32 @@
             <button class="menubar-btn" id="close"><i class="fas fa-times"></i></button>
         </div>
     </nav>
-    <div class="d-flex  align-content-center justify-content-center">
-        <main>
-            <h1 id="hello"></h1>
-            <div id="formulario">
-                <label for="">CPF do Cliente</label>
-                <input type="text" id="cpfCliente">
-                <button id="findByCPF">Procurar</button>
+    <div class="d-flex">
+        <div class="container-fluid mt-4">
+            <div class="row justify-content-center align-items-center">
+                <main>
+                    <h2>Meus Clientes</h2>
+                    <p>Digite qualquer dado para filtrar a tabela por Nome , CPF ou data de nascimento:</p>  
+                    <input class="form-control" id="myInput" onkeyup="filter()" type="text" placeholder="Search..">
+                    <br>
+                    <div>
+                        <table id="tabela" class="table table-bordered mt-3">
+                            <tr>
+                            <th>Nome do cliente</th>
+                            <th>Biotipo</th>
+                            <th>Gênero</th>
+                            <th>CPF</th>
+                            <th>Data Nascimento</th>
+                            <th>Acesso</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="adicionarCliente">
+                        <a href="../formCliente/formCliente.html">Adicionar Cliente</a>
+                    </div>
+                </main>
             </div>
-            <div>
-                <table id="tabela">
-                    <tr>
-                    <th>Nome do cliente</th>
-                    <th>Biotipo</th>
-                    <th>Gênero</th>
-                    <th>CPF</th>
-                    <th>Aniversário</th>
-                    <th>Acesso</th>
-                    </tr>
-                </table>
-            </div>
-            <div id="adicionarCliente">
-                <a href="../formCliente/formCliente.html">Adicionar Cliente</a>
-            </div>
-        </main>
+        </div>
     </div>
     <footer class="footer text-center text-white fixed-bottom">
         <div class="text-center p-3">
@@ -56,16 +58,44 @@
     function inverter(s) {
         return s.split("-").reverse().join('/');
     }
+
+    function filter() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tabela");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } 
+                else {
+                    tr[i].style.display = "none";
+                }
+            }       
+        }
+    }
+
     cont = 0;
     usuario.clientes.forEach(elemento => {
         if(cont % 5 == 0 && cont != 0){
             document.getElementById("tabela").innerHTML += "<tr>";
         }
-        document.getElementById("tabela").innerHTML += "<td>" + elemento.nome + "</td>" + "<td>" + elemento.biotipo + "</td>" + "<td>" + elemento.genero + "</td>" + "<td>" + elemento.cpf + "</td>" +"<td>" + inverter(new Date(elemento.data_nascimento).toISOString().split("T")[0]) + "</td>" + `<td> <button onclick="getCliente()" cpf="${elemento.cpf}" class='findCliente'> &#10149; </button></td>`;
+        document.getElementById("tabela").innerHTML += "<td>" + elemento.nome + "</td>" 
+            + "<td>" + elemento.biotipo + "</td>" 
+            + "<td>" + elemento.genero + "</td>" 
+            + "<td>" + elemento.cpf + "</td>" 
+            + "<td>" + inverter(new Date(elemento.data_nascimento).toISOString().split("T")[0]) + "</td>" 
+            + `<td> <button onclick="getCliente()" cpf="${elemento.cpf}" class='findCliente'><i class="fas fa-arrow-right"></i></button></td>`;
+            
         if(cont % 5 == 0 && cont != 0){
             document.getElementById("tabela").innerHTML += "<tr>";
         }
         cont += 1;
     });
+
 </script>
 </html>

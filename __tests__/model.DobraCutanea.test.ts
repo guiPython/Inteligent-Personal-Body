@@ -1,7 +1,7 @@
 import { DbrCutanea , AtrDbrCutanea } from "../src/scripts/Models/dbrCutaneas"
 
 const dbrCutanea : AtrDbrCutanea = {
-    id_cliente:2,
+    id_cliente:4,
     dbrcAbdominal:14.5,
     dbrcPeitoral:10.5,
     dbrcTricipitalD:8.4,
@@ -18,7 +18,7 @@ describe("\n TESTE: Métodos do Banco Tabela Dobras Cutaneas", () => {
         expect( await DbrCutanea.create(dbrCutanea) ).toMatchObject(
             {
                 id:1,
-                id_cliente:2,
+                id_cliente:4,
                 dbrcAbdominal:14.5,
                 dbrcPeitoral:10.5,
                 dbrcTricipitalD:8.4,
@@ -41,7 +41,7 @@ describe("\n TESTE: Métodos do Banco Tabela Dobras Cutaneas", () => {
         expect( await DbrCutanea.create(dbrCutanea) ).toMatchObject(
             {
                 id:2,
-                id_cliente:2,
+                id_cliente:4,
                 dbrcAbdominal:14.5,
                 dbrcPeitoral:10.5,
                 dbrcTricipitalD:8.4,

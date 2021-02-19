@@ -3,7 +3,7 @@ import { remote } from "electron"
 import path from "path"
 
 let win = remote.getCurrentWindow()
-const usuario = JSON.parse(sessionStorage.getItem("user") as string) as any
+var usuario = JSON.parse(sessionStorage.getItem("user") as string) as any
 
 function minimizeWindow( browserWindow : Electron.BrowserWindow ):void{
     if ( browserWindow.minimizable ){
@@ -14,12 +14,12 @@ function minimizeWindow( browserWindow : Electron.BrowserWindow ):void{
 function maximizeWindow( browserWindow : Electron.BrowserWindow ):void{
     if ( browserWindow.maximizable ){
         //browserWindow.maximize()
-        //browserWindow.setSize()
     }
 }
 
 function closeWindow( browserWindow : Electron.BrowserWindow ):void{
     browserWindow.close()
+    ipcRenderer.send("window-all-closed")
 }
 
 function isWindowMaximized( browserWindow : Electron.BrowserWindow ):boolean{
@@ -33,17 +33,9 @@ function getCliente(){
 }
 
 document.addEventListener("DOMContentLoaded",()=>{
-    const bvn = document.querySelector("#hello") as HTMLElement
-    bvn.innerHTML = `Olá ${usuario.nome}`
-    const btnFindByCPF  = document.querySelector("#findByCPF")  as HTMLButtonElement
-    const inpCPF  = document.querySelector("#cpfCliente")  as HTMLInputElement
     const minimizeButton = document.getElementById("minimize") as HTMLElement;
     const maxUnmaxButton = document.getElementById("maximize") as HTMLElement;
     const closeButton = document.getElementById("close") as HTMLElement;
-    
-    btnFindByCPF.addEventListener("click", () => {
-        ipcRenderer.send("getCliente",{id_usuario:usuario.id,cpf:inpCPF.value})
-    })
 
     ipcRenderer.on("sendCliente", async (event,arg:string) => {
         let cliente = arg

@@ -1,7 +1,7 @@
 import { CircMusculo ,  AtrCircMusculo } from "../src/scripts/Models/circMusculos"
 
 const circMusculo : AtrCircMusculo = {
-    id_cliente:2,
+    id_cliente:4,
     circAbdomen:5.6,
     circBracoD:15.6,
     circBracoE:89.6,

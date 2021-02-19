@@ -17,6 +17,7 @@ function maximizeWindow( browserWindow : Electron.BrowserWindow ):void{
 
 function closeWindow( browserWindow : Electron.BrowserWindow ):void{
     browserWindow.close()
+    ipcRenderer.send("window-all-closed")
 }
 
 function isWindowMaximized( browserWindow : Electron.BrowserWindow ):boolean{
@@ -39,10 +40,11 @@ document.addEventListener("DOMContentLoaded",()=>{
     const minimizeButton = document.getElementById("minimize") as HTMLElement;
     const maxUnmaxButton = document.getElementById("maximize") as HTMLElement;
     const closeButton = document.getElementById("close") as HTMLElement;
-    const bvn = document.querySelector("#hello") as HTMLElement
+    const bvn = document.querySelector("#presentation") as HTMLElement
     const cliente = JSON.parse(sessionStorage.getItem("cliente") as string) as any
+    const usuario = JSON.parse(sessionStorage.getItem("user") as string) as any
     const btnRotate = document.getElementById("rotate") as HTMLButtonElement
-    bvn.innerHTML = `Olá ${cliente.nome}`
+    bvn.innerHTML = `IPB - ${cliente.nome}`
 
 
     btnRotate.addEventListener("click" , () => {

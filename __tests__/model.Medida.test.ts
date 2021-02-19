@@ -1,7 +1,7 @@
 import { Medida , AtrMedida } from "../src/scripts/Models/medida"
 
 const medida : AtrMedida = {
-    id_cliente:2,
+    id_cliente:4,
     altura:1.86,
     peso:87.63,
 }
@@ -16,7 +16,7 @@ describe("\n TESTE: Métodos do Banco Tabela Usuarios", () => {
         expect( await Medida.create(medida) ).toMatchObject(
             {
                     id:1,
-                    id_cliente:2,
+                    id_cliente:4,
                     altura:1.86,
                     peso:87.63,
             }
@@ -37,7 +37,7 @@ describe("\n TESTE: Métodos do Banco Tabela Usuarios", () => {
         expect( await Medida.create(medida) ).toMatchObject(
             {
                     id:2,
-                    id_cliente:2,
+                    id_cliente:4,
                     altura:1.86,
                     peso:87.63,
             }

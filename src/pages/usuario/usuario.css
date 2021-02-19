@@ -4,19 +4,11 @@ h1,input,label,button{
 body{
     color: black;
 }
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
+
+.d-flex{
+    margin-top: 10vh;
 }
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-tbody:nth-child(even) {
-    background-color: #dddddd;
-}
+
 main{
     background-color: white;
     width: 80%;
@@ -28,12 +20,9 @@ main{
     padding: 10px;
     width: 40%;
 }
-table th {
-    background-color: black;
-    color: white;
-}
+
 .findCliente{
-    background-color: aqua;
+    background-color: rgb(29, 27, 27);
     border: none;
     color: white;
     padding: 2px 25px;
@@ -46,7 +35,6 @@ table th {
 
 .navbar,.footer.text-center.text-white.fixed-bottom{
     background-color: rgba(0, 0, 0, 0.75);
-    /*background-color: rgba(195, 193, 193, 0.712);*/
 }
 
 button {
@@ -57,30 +45,14 @@ button {
     outline: none;
 }
 
-button:hover {
+#menu button:hover {
     background: rgba(221, 221, 221, 0.2);
 }
 
-#close:hover {
+#menu #close:hover {
     background: rgb(255, 0, 0);
 }
 
 button i {
     color: white;
 }
-
-/*table tr:nth-child(2){
-    width: 11%;
-}
-table tr:nth-child(3){
-    width: 11%;
-}
-table tr:nth-child(4){
-    width: 13%;
-}
-table tr:nth-child(5){
-    width: 13%;
-}
-table tr:nth-child(6){
-    width: 10%;
-}*/

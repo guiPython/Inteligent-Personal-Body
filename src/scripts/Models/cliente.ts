@@ -57,6 +57,7 @@ Cliente.init(
         },
         cpf:{
             type:DataTypes.STRING,
+            unique: true,
             allowNull:false,
         },
         data_nascimento:{
@@ -73,6 +74,7 @@ Cliente.init(
         },
         email:{
             type:DataTypes.STRING,
+            unique: true,
             allowNull:false,
         },
         status:{

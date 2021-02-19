@@ -12,6 +12,30 @@ const cliente : AtrCliente = {
     
 }
 
+const cliente2 : AtrCliente = {   
+    id_usuario:2,
+    nome:"DiegoLina 13",
+    cpf:"xxx.yyy.uuu-xx",
+    data_nascimento:new Date(2001,11,15),
+    biotipo:"Mesomorfo",
+    genero:"Masculino",
+    email:"diegoVisk.gmail.com.br",
+    status:true,
+    
+}
+
+const cliente3 : AtrCliente = {   
+    id_usuario:2,
+    nome:"Mamaco Loko",
+    cpf:"ooo.xxx.ooo-xx",
+    data_nascimento:new Date(2002,10,25),
+    biotipo:"Endomorfo",
+    genero:"Masculino",
+    email:"mamacoLoko.gmail.com.br",
+    status:true,
+    
+}
+
 describe("\n TESTE: Métodos do Banco Tabela Clientes", () => {
     
     test(" function Create Table Clientes", async () => {
@@ -32,6 +56,32 @@ describe("\n TESTE: Métodos do Banco Tabela Clientes", () => {
                     status:cliente.status
                 }
         )
+        expect( await Cliente.create(cliente2) ).toMatchObject(
+            {
+                    id:2,
+                    id_usuario:cliente2.id_usuario,
+                    nome:cliente2.nome,
+                    cpf:cliente2.cpf,
+                    data_nascimento:cliente2.data_nascimento,
+                    biotipo:cliente2.biotipo,
+                    genero:cliente2.genero,
+                    email:cliente2.email,
+                    status:cliente2.status
+                }
+        )
+        expect( await Cliente.create(cliente3) ).toMatchObject(
+            {
+                    id:3,
+                    id_usuario:cliente3.id_usuario,
+                    nome:cliente3.nome,
+                    cpf:cliente3.cpf,
+                    data_nascimento:cliente3.data_nascimento,
+                    biotipo:cliente3.biotipo,
+                    genero:cliente3.genero,
+                    email:cliente3.email,
+                    status:cliente3.status
+                }
+        )
     })
 
     test(" function Update ", async () => {
@@ -47,7 +97,7 @@ describe("\n TESTE: Métodos do Banco Tabela Clientes", () => {
     test(" function Create Again" , async () => {
         expect( await Cliente.create(cliente) ).toMatchObject(
             {
-                    id:2,
+                    id:4,
                     id_usuario:cliente.id_usuario,
                     nome:cliente.nome,
                     cpf:cliente.cpf,

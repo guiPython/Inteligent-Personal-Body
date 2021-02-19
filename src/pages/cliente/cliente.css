@@ -37,26 +37,10 @@ path:hover {
     fill-opacity: 0.4;
 }
 
-.flip-container {
-    width: 400px;
-    height: 680px;
-}
-
-.flipper{
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-}
-
-.front, .back{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-}
-
-.hidden{
+.body-back.hidden,.body-frontal.hidden{
     display: none;
+}
+
+.container{
+    margin: none;
 }

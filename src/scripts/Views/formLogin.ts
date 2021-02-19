@@ -18,6 +18,7 @@ function maximizeWindow( browserWindow : Electron.BrowserWindow ):void{
 
 function closeWindow( browserWindow : Electron.BrowserWindow ):void{
     browserWindow.close()
+    ipcRenderer.send("window-all-closed")
 }
 
 function isWindowMaximized( browserWindow : Electron.BrowserWindow ):boolean{

@@ -12,7 +12,7 @@ describe("\n TESTE: Métodos do Banco Relacionamentos", () => {
     test(" function read Cliente", async () => {
         expect( await Cliente.findOne({where: Sequelize.and({nome:"Cesar Bassi",cpf:"xxx.xxx.xxx-xx"}),include:["medidas","dobras","circunferencias"]}) ).toMatchObject(
             {
-                id: 2,
+                id: 4,
                 id_usuario: 2,
                 nome: 'Cesar Bassi',
                 cpf: 'xxx.xxx.xxx-xx',
@@ -24,7 +24,7 @@ describe("\n TESTE: Métodos do Banco Relacionamentos", () => {
                     {
                         "altura": 1.86,
                         "id": 2,
-                        "id_cliente": 2,
+                        "id_cliente": 4,
                         "peso": 87.63,
                     }
                 ],
@@ -67,6 +67,18 @@ describe("\n TESTE: Métodos do Banco Relacionamentos", () => {
                         "biotipo": "Ectomorfo",
                         "cpf": "xxx.xxx.xxx-xx",
                         "email": "cesar.gmail.com.br",
+                        "genero": "Masculino",
+                    },
+                    {
+                        "biotipo": "Mesomorfo",
+                        "cpf": "xxx.yyy.uuu-xx",
+                        "email": "diegoVisk.gmail.com.br",
+                        "genero": "Masculino",
+                    },
+                    {
+                        "biotipo": "Endomorfo",
+                        "cpf": "ooo.xxx.ooo-xx",
+                        "email": "mamacoLoko.gmail.com.br",
                         "genero": "Masculino",
                     }
                 ]

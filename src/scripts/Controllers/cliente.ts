@@ -1,27 +1,19 @@
 import { Cliente , AtrCliente } from "../Models/cliente"
 import { ipcMain } from "electron"
 import { window } from "../../../main"
-import { Sequelize } from "sequelize"
+import { Sequelize, where } from "sequelize"
 
 const clienteController = async () => {
-    
-    ipcMain.on("readCliente",(event, arg:AtrCliente ) => {
-        let status
-        try{
-            status = true
-        }
-        catch{
-            status = false
-        }
-        window.webContents.send("sendStatusCliente",status)
-    })
 
     ipcMain.on("updateCliente",(event, arg:AtrCliente ) => {
 
     })
 
-    ipcMain.on("createCliente",(event, arg:AtrCliente ) => {
-
+    ipcMain.on("createCliente",async (event, arg:AtrCliente ) => {
+        let status
+        try{ await Cliente.create(arg) ; status = JSON.stringify(await Cliente.findOne({where:{cpf:arg.cpf},include:["dobras","circunferencias","medidas"]})) }
+        catch(e) { status = false }
+        window.webContents.send("sendStatusCadastroCliente",status)
     })
 
     ipcMain.on("getCliente", async (event, arg:{id_usuario:number,cpf:string}) => {

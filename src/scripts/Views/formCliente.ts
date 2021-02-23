@@ -1,7 +1,6 @@
 import { ipcRenderer , remote } from "electron"
 import path from "path"
 import { AtrCliente } from "../Models/cliente"
-import { AtrUsuario } from "../Models/usuario"
 
 const win = remote.getCurrentWindow()
 

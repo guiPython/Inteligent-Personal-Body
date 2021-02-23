@@ -6,6 +6,7 @@
     <link href="../../scripts/FontAwesome/css/all.css" rel="stylesheet">
     <link href="../../scripts/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script> var exports = {} ; </script>
+    <script src="../../../node_modules/chart.js/dist/Chart.js"></script>
     <script src="../../scripts/Views/cliente.js"></script>
 </head>
 <body>
@@ -86,19 +87,24 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="container-fluid">
-                                                <div id="medidas" class="row">
-                                                    <div id="altura" class="col-md-4">
-                                                        <h2>teste</h2>
+                                                <div id="medidas">
+                                                    <div class="row">
+                                                        <h2>Medidas</h2>
                                                     </div>
-                                                    <div id="peso" class="col-md-4">
-                                                        <h3>teste</h3>
-                                                    </div>
-                                                    <div id="IMC" class="col-md-4">
-                                                        <h4>teste</h4>
+                                                    <div class="row ml-3 mt-2">
+                                                        <div id="altura" class="col-md-4">
+                                                            <h3 id="alturaH">Altura: </h3>
+                                                        </div>
+                                                        <div id="peso" class="col-md-4">
+                                                            <h3 id="pesoH">Peso: </h3>
+                                                        </div>
+                                                        <div id="IMC" class="col-md-4">
+                                                            <h3 id="imcH">IMC: </h3>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="row" id="graficoMedidas">
-
+                                                    <canvas id="grafico_1" width="1061.33" height="400"></canvas>
                                                 </div>
                                             </div>
                                         </div>
@@ -127,6 +133,21 @@
     </footer>
     <script>
         var i = 0;
+        var cliente =  JSON.parse(localStorage.getItem("cliente"))
+        var lastMedida = cliente.medidas[cliente.medidas.length - 1 ]
+        var dataSetPeso = []
+        var dataSetAltura = []
+        var dataSetIMC = []
+        cliente.medidas.map( e => { 
+            dataSetPeso.push({x:e.createdAt ,  y:e.peso})
+            dataSetAltura.push({x:e.createdAt , y:e.altura})
+            dataSetIMC.push({x:e.createdAt , y:(e.peso/e.altura**2).toFixed(2)})
+        })
+
+        document.getElementById("alturaH").innerHTML = `Altura: ${lastMedida.altura} m`
+        document.getElementById("pesoH").innerHTML = `Peso: ${lastMedida.peso} Kg`
+        document.getElementById("imcH").innerHTML = `IMC: ${(lastMedida.peso/lastMedida.altura**2).toFixed(2)} Kg.m<sup>-2</sup>`
+
         function bodyPart(){
             Array.from(document.getElementsByClassName("body")).forEach(element => {
                 element.classList.remove("selected")
@@ -148,5 +169,53 @@
             i++
         }
         
+        Chart.defaults.global.defaultFontColor = 'black';
+        Chart.defaults.global.defaultFontSize  = 18;
+        var ctx = document.getElementById("grafico_1")
+        var chart = new Chart(ctx,{
+            type:"line",
+            data:{
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                datasets:[
+                    {
+                        label:"Peso",
+                        backgroundColor: '#ff6384',
+                        borderColor: '#ff6384',
+                        data: dataSetPeso,
+                    },
+                    {
+                        label:"Altura",
+                        backgroundColor: '#36a2eb',
+                        borderColor: '#36a2eb',
+                        data:dataSetAltura,
+                    },
+                    {
+                        label:"IMC",
+                        backgroundColor: '#ffce56',
+                        borderColor: '#ffce56',
+                        data:dataSetIMC,
+                    }
+                ]
+            },
+            options:{
+                responsive:true,
+                scales:{
+                    xAxes:[{
+                        display:true,
+                        scaleLabel:{
+                            display:true,
+                            labelString:"Month"
+                        }
+                    }],
+                    yAxes:[{
+                        display:true,
+                        scaleLabel:{
+                            display:true,
+                            labelString:"Value"
+                        }
+                    }]
+                }
+            }
+        })
     </script>
 </body>

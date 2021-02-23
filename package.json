@@ -12,6 +12,7 @@
   "author": "Guilherme Rocha",
   "license": "ISC",
   "dependencies": {
+    "chart.js": "^2.9.4",
     "copyfiles": "^2.4.1",
     "electron": "^11.2.1",
     "lowdb": "^1.0.0",

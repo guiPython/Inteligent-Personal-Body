@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         if ( arg ){
             let usuario = arg as string
             sessionStorage.setItem("user",usuario);
-            await win.loadFile(path.resolve(__dirname,"../../pages/usuario/usuario.html"))
+            await win.loadFile(path.resolve(__dirname,"../../pages/usuario/usuario.html"),{})
         }
         else{
             alert("Usuario e/ou Senhas incorretos")

@@ -48,16 +48,22 @@
         </div>
     </div>
     <footer class="footer text-center text-white fixed-bottom">
-        <div class="text-center p-3">
-            © 2021 Power By:
-            <a class="text-white" href="#">Thales / Guilherme</a>
+        <div class="conatiner-fluid">
+            <div class="row justify-content-between align-items-center">
+                <div class="sm-col-4">
+                    <button class="menubar-btn ml-4 h4" id="goback"><i class="fas fa-arrow-left"></i></button>
+                    <button class="menubar-btn h4" id="goto"><i class="fas fa-arrow-right"></i></button>
+                </div>
+                <div class="text-center p-3">
+                    © 2021 Power By:
+                    <a class="text-white" href="#">Thales / Guilherme</a>
+                </div>
+                <button class="menubar-btn mr-4 h4" id="logout"><i class="fas fa-user"></i></button>
+            </div>
         </div>
     </footer>
 </body>
 <script>
-    function inverter(s) {
-        return s.split("-").reverse().join('/');
-    }
 
     function filter() {
         var input, filter, table, tr, td, i, txtValue;
@@ -78,24 +84,6 @@
             }       
         }
     }
-
-    cont = 0;
-    usuario.clientes.forEach(elemento => {
-        if(cont % 5 == 0 && cont != 0){
-            document.getElementById("tabela").innerHTML += "<tr>";
-        }
-        document.getElementById("tabela").innerHTML += "<td>" + elemento.nome + "</td>" 
-            + "<td>" + elemento.biotipo + "</td>" 
-            + "<td>" + elemento.genero + "</td>" 
-            + "<td>" + elemento.cpf + "</td>" 
-            + "<td>" + inverter(new Date(elemento.data_nascimento).toISOString().split("T")[0]) + "</td>" 
-            + `<td> <button onclick="getCliente()" cpf="${elemento.cpf}" class='findCliente'><i class="fas fa-arrow-right"></i></button></td>`;
-            
-        if(cont % 5 == 0 && cont != 0){
-            document.getElementById("tabela").innerHTML += "<tr>";
-        }
-        cont += 1;
-    });
 
 </script>
 </html>

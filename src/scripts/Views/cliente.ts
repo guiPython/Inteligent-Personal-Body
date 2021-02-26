@@ -24,17 +24,6 @@ function isWindowMaximized( browserWindow : Electron.BrowserWindow ):boolean{
     return browserWindow.isMaximized()
 }
 
-function rotateModel(){
-    let hiddenModel = document.getElementsByClassName("hidden")
-    if ( hiddenModel[0].id == "frt_1" ){
-        for ( let element of document.getElementsByClassName("back")){ element.classList.add("hidden")}
-    }
-    else{
-        for ( let element of document.getElementsByClassName("frontal")){ element.classList.add("hidden")}
-    }
-    for ( let element of hiddenModel ){ element.classList.remove("hidden") }
-}
-
 document.addEventListener("DOMContentLoaded",()=>{
 
     const minimizeButton = document.getElementById("minimize") as HTMLElement;
@@ -45,11 +34,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     const usuario = JSON.parse(sessionStorage.getItem("user") as string) as any
     const btnRotate = document.getElementById("rotate") as HTMLButtonElement
     bvn.innerHTML = `IPB - ${cliente.nome}`
-
-
-    btnRotate.addEventListener("click" , () => {
-        rotateModel()
-    })
 
     minimizeButton.addEventListener("click", e => {
         minimizeWindow(win);

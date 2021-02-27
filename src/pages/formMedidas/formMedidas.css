@@ -1,0 +1,45 @@
+.navbar,.footer.text-center.text-white.fixed-bottom{
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+button {
+    height: 100%;
+    padding: 0 15px;
+    border: none;
+    background: transparent;
+    outline: none;
+}
+
+button:hover {
+    background: rgba(221, 221, 221, 0.2);
+}
+
+#close:hover {
+    background: rgb(255, 0, 0);
+}
+
+button i {
+    color: white;
+}
+
+.d-flex{
+    padding-top: 15vh;
+    border: none;
+    animation-name: example;
+    animation-duration: 4s;
+}
+
+.card.form{
+    float: none; /* Added *//* Added */
+    border: none;
+}
+
+.card-body.form{
+    padding-left: 100px;
+    padding-top: 20px;
+}
+
+.card.align-items-center.justify-content-center.apresentacao{
+    border: none;
+    border-radius: 0%;
+}

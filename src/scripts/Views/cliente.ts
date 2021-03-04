@@ -47,7 +47,8 @@ document.addEventListener("DOMContentLoaded",()=>{
     const altura = document.getElementById("alturaH") as HTMLElement;
     const peso = document.getElementById("pesoH") as HTMLElement;
     const imc = document.getElementById("imcH") as HTMLElement;
-    const divMedidas = document.getElementById("graficoMedidas") as HTMLElement
+    const divMedidas = document.getElementById("graficoMedidas") as HTMLElement;
+    const btnUpdateCliente = document.getElementById("updateCliente")
 
     bvn.innerHTML = `IPB - ${cliente.nome}`
 

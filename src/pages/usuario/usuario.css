@@ -1,14 +1,13 @@
+@charset "utf-8";
 h1,input,label,button{
     color: black;
 }
 body{
     color: black;
 }
-
 .d-flex{
     margin-top: 10vh;
 }
-
 main{
     background-color: white;
     width: 80%;
@@ -20,7 +19,6 @@ main{
     padding: 10px;
     width: 40%;
 }
-
 .findCliente{
     background-color: rgb(29, 27, 27);
     border: none;
@@ -32,11 +30,9 @@ main{
     font-size: 20px;
     width: 50%;
 }
-
 .navbar,.footer.text-center.text-white.fixed-bottom{
     background-color: rgba(0, 0, 0, 0.75);
 }
-
 button {
     height: 100%;
     padding: 0 15px;
@@ -44,15 +40,12 @@ button {
     background: transparent;
     outline: none;
 }
-
 #menu button:hover {
     background: rgba(221, 221, 221, 0.2);
 }
-
 #menu #close:hover {
     background: rgb(255, 0, 0);
 }
-
 button i {
     color: white;
 }

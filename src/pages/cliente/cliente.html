@@ -7,12 +7,16 @@
     <link href="../../scripts/FontAwesome/css/all.css" rel="stylesheet">
     <link href="../../scripts/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script> var exports = {} ; </script>
-    <script src="../../scripts/Views/cliente.js"></script>
+    <!--<script src="../../scripts/Views/cliente.js"></script>!-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>!-->
 </head>
 <body>
     <nav class="navbar justify-content-between">
         <div><h4 id="presentation" class="text-white h4">IPB - Cliente</h4></div>
         <div id="menu">
+            <button class="btn btn-btn-outline-dark ml-3 mr-3"><a href="../formCircun/circun.html">Voltar</a></button> 
             <button class="menubar-btn" id="minimize"><i class="fas fa-window-minimize"></i></button>
             <button class="menubar-btn" id="maximize"><i class="far fa-square"></i></button>
             <button class="menubar-btn" id="close"><i class="fas fa-times"></i></button>
@@ -81,49 +85,49 @@
                             </svg>
                             <div class="conatiner-fluid col-md-8 mt-4">
                                     <div class="row mb-3">
-                                        <button><h2>Geral</h2></button>
-                                        <button><h2>Circunferencias</h2></button>
-                                        <button><h2>Dobras Cutaneas</h2></button>
-                                        <button><h2>Medidas</h2></button>
+                                        <button data-target="#demo" data-slide-to="0"><h2>Geral</h2></button>
+                                        <button data-target="#demo" data-slide-to="1"><h2>Circunferencias</h2></button>
+                                        <button data-target="#demo" data-slide-to="2"><h2>Dobras Cutaneas</h2></button>
+                                        <button data-target="#demo" data-slide-to="3"><h2>Medidas</h2></button>
                                     </div>
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="container-fluid">
-                                                
-                                            </div>
+                                    <div id="palheta" class="carousel slide" data-ride="carousel">
+                                        <ul class="carousel-indicators">
+                                          <li data-target="#demo" data-slide-to="0" class="active"></li>
+                                          <li data-target="#demo" data-slide-to="1"></li>
+                                          <li data-target="#demo" data-slide-to="2"></li>
+                                          <li data-target="#demo" data-slide-to="3"></li>
+                                        </ul>
+                                        <div class="carousel-inner">
+                                          <div class="carousel-item active">
+                                            <div class="card">
+                                                <div class="card-header">Header</div>
+                                                <div class="card-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe voluptatem eaque obcaecati numquam at, unde fugiat et tempora rerum, nobis modi dolorem ipsam repellendus dolores doloremque ratione commodi doloribus sint.</div>
+                                                <div class="card-footer">Footer</div>
+                                              </div>
+                                          </div>
+                                          <div class="carousel-item">
+                                            <div class="card-header">Header</div>
+                                            <div class="card-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe voluptatem eaque obcaecati numquam at, unde fugiat et tempora rerum, nobis modi dolorem ipsam repellendus dolores doloremque ratione commodi doloribus sint.</div>
+                                            <div class="card-footer">Footer</div>
+                                          </div>
+                                          <div class="carousel-item">
+                                            <div class="card-header">Header</div>
+                                            <div class="card-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe voluptatem eaque obcaecati numquam at, unde fugiat et tempora rerum, nobis modi dolorem ipsam repellendus dolores doloremque ratione commodi doloribus sint.</div>
+                                            <div class="card-footer">Footer</div>
+                                          </div>
+                                          <div class="carousel-item">
+                                            <div class="card-header">Header</div>
+                                            <div class="card-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe voluptatem eaque obcaecati numquam at, unde fugiat et tempora rerum, nobis modi dolorem ipsam repellendus dolores doloremque ratione commodi doloribus sint.</div>
+                                            <div class="card-footer">Footer</div>
+                                          </div>
                                         </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="container-fluid">
-                                                <div id="medidas">
-                                                    <!--<div class="row">
-                                                        <h2>Medidas</h2>
-                                                        <h2 class="ml-4">Circunferencias</h2>
-                                                        <h2 class="ml-4">Dobras Cutaneas</h2>
-                                                    </div>!-->
-                                                    <div class="row ml-3 mt-2">
-                                                        <div id="altura" class="col-md-4">
-                                                            <h4 id="alturaH">Altura: </h4>
-                                                        </div>
-                                                        <div id="peso" class="col-md-4">
-                                                            <h4 id="pesoH">Peso: </h4>
-                                                        </div>
-                                                        <div id="IMC" class="col-md-4">
-                                                            <h4 id="imcH">IMC: </h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row mt-3" id="graficoMedidas">
-                                                    
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="table table-bordered" style="display: none;">
-
-                                    </div>
-                                </div>
+                                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                                          <span class="carousel-control-prev-icon"></span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#demo" data-slide="next">
+                                          <span class="carousel-control-next-icon"></span>
+                                        </a>
+                                      </div>
                             </div>
                             <div class="row col-md-4 justify-content-center mt-3">
                                 <button id="rotate" onclick="rotateModel()" class="btn btn-dark p-2">

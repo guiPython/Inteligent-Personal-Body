@@ -47,3 +47,7 @@ path:hover {
 i{
     color: #ff0000;
 }
+.carousel-inner div {
+    width: 100%;
+    height: 100%;
+  }

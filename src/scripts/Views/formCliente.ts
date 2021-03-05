@@ -4,6 +4,10 @@ import { AtrCliente } from "../Models/cliente"
 
 const win = remote.getCurrentWindow()
 
+function inverter(s:string) {
+    return s.split("-").reverse().join('/');
+}
+
 function minimizeWindow( browserWindow : Electron.BrowserWindow ):void{
     if ( browserWindow.minimizable ){
         browserWindow.minimize()
@@ -32,6 +36,23 @@ document.addEventListener("DOMContentLoaded",()=>{
     const maxUnmaxButton = document.getElementById("maximize") as HTMLElement;
     const closeButton = document.getElementById("close") as HTMLElement;
     const cadastroButton = (document.getElementById("cadastro") as HTMLElement);
+    const cliente = sessionStorage.getItem("cliente") as any
+    const inpNome = (document.getElementById("nome")  as HTMLInputElement);
+    const inpSobreNome = (document.getElementById("sobrenome") as HTMLInputElement);
+    const inpDataNascimento = (document.getElementById("dataNascimento") as HTMLInputElement);
+    const inpEmail = (document.getElementById("email") as HTMLInputElement);
+    const inpCpf = (document.getElementById("cpf") as HTMLInputElement);
+    const inpBiotipo =  ( document.getElementById("listaBiotipos") as HTMLSelectElement);
+    const inpGenero = (document.getElementById("listaSexos") as HTMLSelectElement);
+    if ( cliente != null ){
+        inpNome.innerHTML = cliente.nome.split(" ")[0]
+        inpSobreNome.innerHTML = cliente.nome.split(" ")[1]
+        inpDataNascimento.innerHTML = inverter(new Date(cliente.data_nascimento).toISOString().split("T")[0])
+        inpEmail.innerHTML = cliente.email
+        inpCpf.innerHTML = cliente.cpf
+        inpBiotipo.innerHTML = cliente.biotipo
+        inpGenero.innerHTML = cliente.genero
+    }
 
     minimizeButton.addEventListener("click", e => {
         minimizeWindow(win);
@@ -57,28 +78,26 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     cadastroButton.addEventListener("click",()=>{
 
-        const inpNome = (document.getElementById("nome")  as HTMLInputElement).value as string;
-        const inpSobreNome = (document.getElementById("sobrenome") as HTMLInputElement).value as string;
-        const inpDataNascimento = (document.getElementById("dataNascimento") as HTMLInputElement).value as string;
-        const [ dia, mes , ano ] = inpDataNascimento.split("/")
+        const Nome = inpNome.value as string;
+        const SobreNome = inpSobreNome.value as string;
+        const DataNascimento = inpDataNascimento.value as string;
+        const [ dia, mes , ano ] = DataNascimento.split("/")
         const [ diaV, mesV, anoV ] = [Number(dia),Number(mes),Number(ano)]
-        const inpNomeCompleto = inpNome +" "+ inpSobreNome
-        const inpEmail = (document.getElementById("email") as HTMLInputElement).value as string;
-        const inpCpf = (document.getElementById("cpf") as HTMLInputElement).value as string;
-        const inpGenero = (document.getElementById("listaSexos") as HTMLSelectElement);
-        const inptGeneroValue = inpGenero.options[inpGenero.selectedIndex].text as string;
-        const inpBiotipo =  ( document.getElementById("listaBiotipos") as HTMLSelectElement);
-        const inpBiotipoValue = inpBiotipo.options[inpBiotipo.selectedIndex].text as string
+        const NomeCompleto = Nome +" "+ SobreNome
+        const Email = inpEmail.value as string;
+        const Cpf = inpCpf.value as string;
+        const GeneroValue = inpGenero.options[inpGenero.selectedIndex].text as string;
+        const BiotipoValue = inpBiotipo.options[inpBiotipo.selectedIndex].text as string
 
         const cliente : AtrCliente = {
             id_usuario:usuario.id,
-            nome:inpNomeCompleto,
-            email:inpEmail,
-            cpf:inpCpf,
-            biotipo:inpBiotipoValue,
+            nome:NomeCompleto,
+            email:Email,
+            cpf:Cpf,
+            biotipo:BiotipoValue,
             status:true,
             data_nascimento:new Date(anoV,mesV-1,diaV),
-            genero:inptGeneroValue
+            genero:GeneroValue
         }
         ipcRenderer.send("createCliente",cliente)
     })

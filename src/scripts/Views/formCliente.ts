@@ -3,9 +3,14 @@ import path from "path"
 import { AtrCliente } from "../Models/cliente"
 
 const win = remote.getCurrentWindow()
+const webContent = remote.getCurrentWebContents()
 
 function inverter(s:string) {
     return s.split("-").reverse().join('/');
+}
+
+function backPage ( webContent : Electron.WebContents ):void{
+    webContent.goBack();
 }
 
 function minimizeWindow( browserWindow : Electron.BrowserWindow ):void{
@@ -35,8 +40,10 @@ document.addEventListener("DOMContentLoaded",()=>{
     const minimizeButton = document.getElementById("minimize") as HTMLElement;
     const maxUnmaxButton = document.getElementById("maximize") as HTMLElement;
     const closeButton = document.getElementById("close") as HTMLElement;
+    const voltarButton = document.getElementById("voltar") as HTMLElement;
+    const updateButton = document.getElementById("update") as HTMLElement;
     const cadastroButton = (document.getElementById("cadastro") as HTMLElement);
-    const cliente = sessionStorage.getItem("cliente") as any
+    const cliente = JSON.parse(sessionStorage.getItem("cliente") as string);
     const inpNome = (document.getElementById("nome")  as HTMLInputElement);
     const inpSobreNome = (document.getElementById("sobrenome") as HTMLInputElement);
     const inpDataNascimento = (document.getElementById("dataNascimento") as HTMLInputElement);
@@ -45,13 +52,13 @@ document.addEventListener("DOMContentLoaded",()=>{
     const inpBiotipo =  ( document.getElementById("listaBiotipos") as HTMLSelectElement);
     const inpGenero = (document.getElementById("listaSexos") as HTMLSelectElement);
     if ( cliente != null ){
-        inpNome.innerHTML = cliente.nome.split(" ")[0]
-        inpSobreNome.innerHTML = cliente.nome.split(" ")[1]
-        inpDataNascimento.innerHTML = inverter(new Date(cliente.data_nascimento).toISOString().split("T")[0])
-        inpEmail.innerHTML = cliente.email
-        inpCpf.innerHTML = cliente.cpf
-        inpBiotipo.innerHTML = cliente.biotipo
-        inpGenero.innerHTML = cliente.genero
+        updateButton.removeAttribute("disabled")
+        cadastroButton.setAttribute("disabled","disabled")
+        inpNome.value = cliente.nome.split(" ")[0]
+        inpSobreNome.value = cliente.nome.split(" ")[1]
+        inpDataNascimento.value = inverter(new Date(cliente.data_nascimento).toISOString().split("T")[0])
+        inpEmail.value = cliente.email
+        inpCpf.value = cliente.cpf
     }
 
     minimizeButton.addEventListener("click", e => {
@@ -75,6 +82,10 @@ document.addEventListener("DOMContentLoaded",()=>{
     closeButton.addEventListener("click", e => {
         closeWindow(win);
     });
+
+    voltarButton.addEventListener("click",() => {
+        backPage(webContent)
+    })
 
     cadastroButton.addEventListener("click",()=>{
 
@@ -100,6 +111,44 @@ document.addEventListener("DOMContentLoaded",()=>{
             genero:GeneroValue
         }
         ipcRenderer.send("createCliente",cliente)
+    })
+
+    updateButton.addEventListener("click",() =>{
+
+        const Nome = inpNome.value as string;
+        const SobreNome = inpSobreNome.value as string;
+        const DataNascimento = inpDataNascimento.value as string;
+        const [ dia, mes , ano ] = DataNascimento.split("/")
+        const [ diaV, mesV, anoV ] = [Number(dia),Number(mes),Number(ano)]
+        const NomeCompleto = Nome +" "+ SobreNome
+        const Email = inpEmail.value as string;
+        const Cpf = inpCpf.value as string;
+        const GeneroValue = inpGenero.options[inpGenero.selectedIndex].text as string;
+        const BiotipoValue = inpBiotipo.options[inpBiotipo.selectedIndex].text as string;
+
+        const cliente : AtrCliente = {
+            id_usuario:usuario.id,
+            nome:NomeCompleto,
+            email:Email,
+            cpf:Cpf,
+            biotipo:BiotipoValue,
+            status:true,
+            data_nascimento:new Date(anoV,mesV-1,diaV),
+            genero:GeneroValue
+        }
+
+        ipcRenderer.send("updateCliente",cliente)
+    })
+
+    ipcRenderer.on("sendStatusUpdateCliente",async(event, args)=>{
+        if (args){
+            let cliente = args
+            sessionStorage.setItem('cliente',cliente)
+            await win.loadFile(path.resolve(__dirname,"../../pages/cliente/cliente.html"))
+        }
+        else{
+            alert("Erro ao atualizar os dados")
+        }
     })
 
     ipcRenderer.on("sendStatusCadastroCliente",async(event, args)=>{

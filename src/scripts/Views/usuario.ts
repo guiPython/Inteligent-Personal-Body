@@ -104,6 +104,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     })
 
     goBackButton.addEventListener("click" , e => {
+        sessionStorage.removeItem("user")
         backPage(webContent);
     })
 

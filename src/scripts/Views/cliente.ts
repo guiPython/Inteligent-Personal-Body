@@ -6,6 +6,10 @@ let webContent = remote.getCurrentWebContents()
 const cliente = JSON.parse(sessionStorage.getItem("cliente") as string) as any
 const usuario = JSON.parse(sessionStorage.getItem("user") as string) as any
 
+function inverter(s:string) {
+    return s.split("-").reverse().join('/');
+}
+
 function logout ( webContent : Electron.WebContents ):void{
     webContent.goToIndex(0);
     webContent.clearHistory();
@@ -48,6 +52,9 @@ document.addEventListener("DOMContentLoaded",()=>{
     const peso = document.getElementById("pesoH") as HTMLElement;
     const imc = document.getElementById("imcH") as HTMLElement;
     const divMedidas = document.getElementById("graficoMedidas") as HTMLElement;
+    const nome = document.getElementById("nomeH") as HTMLElement
+    const cpf =  document.getElementById("cpfH") as HTMLElement
+    const dataNasc = document.getElementById("dataNascH") as HTMLElement
     const btnUpdateCliente = document.getElementById("updateCliente")
 
     bvn.innerHTML = `IPB - ${cliente.nome}`
@@ -55,46 +62,43 @@ document.addEventListener("DOMContentLoaded",()=>{
     if (cliente.medidas.length != 0 ){
         divMedidas.innerHTML = '<canvas id="grafico_1" width="1061.33" height="400"></canvas>'
         Chart.defaults.global.defaultFontColor = 'black';
-        Chart.defaults.global.defaultFontSize  = 18;
+        Chart.defaults.global.defaultFontSize  = 15;
         var ctx = document.getElementById("grafico_1") as HTMLCanvasElement;
         var lastMedida = cliente.medidas[cliente.medidas.length - 1 ]
         var dataSetPeso : any = []
-        var dataSetAltura : any = []
         var dataSetIMC : any = []
         cliente.medidas.map( ( e : any ) => { 
-                dataSetPeso.push({x:e.createdAt ,  y:e.peso})
-                dataSetAltura.push({x:e.createdAt , y:e.altura})
-                dataSetIMC.push({x:e.createdAt , y:(e.peso/e.altura**2).toFixed(2)})
-            })
+            dataSetPeso.push({x:e.createdAt ,  y:e.peso})
+            dataSetIMC.push({x:e.createdAt , y:(e.peso/e.altura**2).toFixed(2)})
+        })
 
+        nome.innerHTML = `Nome: ${cliente.nome}`
+        cpf.innerHTML = `CPF: ${cliente.cpf}`
+        dataNasc.innerHTML =  `Data de Nascimento: ${inverter(new Date(cliente.data_nascimento).toISOString().split("T")[0])}`
         altura.innerHTML = `Altura: ${lastMedida.altura} m`
         peso.innerHTML = `Peso: ${lastMedida.peso} Kg`
         imc.innerHTML = `IMC: ${(lastMedida.peso/lastMedida.altura**2).toFixed(2)} Kg.m<sup>-2</sup>`
 
+        var dataSetGeral : any = 
+        [   {
+                label:"Peso",
+                backgroundColor: '#ff6384',
+                borderColor: '#ff6384',
+                data: dataSetPeso,
+            },
+            {
+                label:"IMC",
+                backgroundColor: '#ff6384',
+                borderColor: '#ff6384',
+                data:dataSetIMC,
+            }
+        ]
+
         var chart = new Chart(ctx,{
                 type:"line",
                 data:{
-                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                    datasets:[
-                        {
-                            label:"Peso",
-                            backgroundColor: '#ff6384',
-                            borderColor: '#ff6384',
-                            data: dataSetPeso,
-                        },
-                        {
-                            label:"Altura",
-                            backgroundColor: '#36a2eb',
-                            borderColor: '#36a2eb',
-                            data:dataSetAltura,
-                        },
-                        {
-                            label:"IMC",
-                            backgroundColor: '#ffce56',
-                            borderColor: '#ffce56',
-                            data:dataSetIMC,
-                        }
-                    ]
+                    labels: ['Jan', 'Feb', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Agt', 'Set', 'Out', 'Nov', 'Dez'],
+                    datasets:dataSetGeral
                 },
                 options:{
                     responsive:true,
@@ -116,6 +120,8 @@ document.addEventListener("DOMContentLoaded",()=>{
                     }
                 }
             })
+
+            
     }
     else{
         divMedidas.innerHTML = '<h3> Sem Medidas </h3>'
@@ -125,6 +131,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     })
 
     goBackButton.addEventListener("click" , e => {
+        sessionStorage.removeItem("cliente")
         backPage(webContent);
     })
 
